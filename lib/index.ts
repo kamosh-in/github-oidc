@@ -18,8 +18,15 @@ export class GithubOidc extends cdk.Stack {
 				StringEquals: {
 					'token.actions.githubusercontent.com:aud': 'sts.amazonaws.com'
 				},
+
+				// Change out <OWNER> for your username or orgnanization name
 				StringLike: {
-					'token.actions.githubusercontent.com:sub': 'repo:kamosh-in/*'
+					'token.actions.githubusercontent.com:sub': 'repo:<OWNER>/*'
+
+					// Alternative for a specific repository
+					
+					// 	'token.actions.githubusercontent.com:sub': 'repo:<OWNER>/<REPO>:*'
+				
 				},
 			}),
 			managedPolicies: [
