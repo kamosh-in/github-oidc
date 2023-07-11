@@ -1,6 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { Role, FederatedPrincipal, OpenIdConnectProvider, ManagedPolicy, } from 'aws-cdk-lib/aws-iam';
+import { FederatedPrincipal, ManagedPolicy, OpenIdConnectProvider, Role, } from 'aws-cdk-lib/aws-iam';
 
 export class GithubOidc extends cdk.Stack {
 	constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -20,7 +20,7 @@ export class GithubOidc extends cdk.Stack {
 					'token.actions.githubusercontent.com:aud': 'sts.amazonaws.com',
 					'token.actions.githubusercontent.com:sub': 'repo:<OWNER>/*',
 				},
-			}),
+			},'sts:AssumeRoleWithWebIdentity'),
 			managedPolicies: [
 				ManagedPolicy.fromAwsManagedPolicyName('AdministratorAccess'),
 			],

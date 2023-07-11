@@ -1,5 +1,5 @@
-import { App } from 'aws-cdk-lib';
-import { GithubOidc } from '../lib';
+import { App, } from 'aws-cdk-lib';
+import { GithubOidc, } from '../lib';
 
 const app = new App();
 
